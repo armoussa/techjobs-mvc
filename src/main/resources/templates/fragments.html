@@ -27,5 +27,23 @@
         </div>
     </div>
 
+    <div th:fragment="results">
+
+        <h1 th:if="${jobs}" th:text="'Result(s) ' + ${jobs.size()} + ' Jobs'"></h1>
+
+            <div th:if="${jobs} and ${jobs.size()}">
+
+            <table>
+                <span th:each="item: ${jobs}" th:class="job-listing">
+               <!-- <td><a th:href="@{/list/jobs(column=${column},value=${item})}" th:text="${item}"></a></td> -->
+                <tr th:each="i: ${item}"  th:class="job-listing">
+                    <td th:text="${i.key}"></td>
+                    <td th:text="${i.value}"> </td>
+
+                </tr>
+                </span>
+            </table>
+            </div>
+    </div>
 </body>
 </html>
